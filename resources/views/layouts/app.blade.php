@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
     <style>
+        
         #body{
     background-color:#1A1A1A;
 }
@@ -115,14 +116,14 @@ bottom: 0;
 left: 0;
 right: 0;
 }
-.slider {
+.main-card {
 position: relative;
 max-width: 80%;
 margin: 0 auto;
 }
 
 .slick-slide {
-height: 300px;
+height: 100px;
 margin: 0 10px;
 }
 
@@ -139,7 +140,7 @@ border: none;
 height: 100%;
 color: #ffffff;
 background:transparent;
-left: -100px;
+left: -0px;
 }
 
 .slick-next {
@@ -155,7 +156,7 @@ border: none;
 height: 100%;
 background:transparent;
 color: #fff;
-right: -100px;
+right: -0%;
 }
 
 .slick-prev:hover, .slick-next:hover {
@@ -231,11 +232,66 @@ opacity: 1;
 .text{
     color:white;
 }
+.main{
+    width:10px;
+    cursor: pointer;
+    text-decoration:none;
+}
+.main:hover .card{
+    border: 2px solid #AD4328;
+}
 
-    </style>
+.the-info {
+  display: flex;
+  align-items: center;
+}
+
+.the-img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border: 2px solid #fff;
+  border-radius: 10px;
+}
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 40px;
+  margin-top: 10px;
+}
+.rating input {
+  display: none;
+}
+
+.rating label:before {
+  content: "\2605";
+  font-size: 36px;
+  line-height: 40px;
+  color: #ddd;
+  transition: color 0.2s ease-in-out;
+}
+.rating input:checked ~ label:before {
+  color: #FFC107;
+}
+.rating label:hover:before {
+  color: #FFC107;
+}
+.comment-section{
+    background-color:rgb(36, 36, 36);
+    padding: 200px;
+    border-radius:5px;
+}
+.search{
+    background-color:#ad4329;
+}
+
+
+
+
+
+</style>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
     <!-- Include Slick CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
 
@@ -249,7 +305,7 @@ opacity: 1;
     
     
 </head>
-<body id="body">
+<body id="body" class="d-flex flex-column min-vh-100">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
@@ -268,22 +324,32 @@ opacity: 1;
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">TvShows</a>
+                            <a class="nav-link" href="/TvShow">TvShows</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Movies</a>
+                            <a class="nav-link" href="/Movie">Movies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Anime</a>
+                            <a class="nav-link" href="/Anime">Anime</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Games</a>
+                            <a class="nav-link" href="/Games">Games</a>
                         </li>
                     </ul>
 
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        
+                    <div class="mt-4">
+                        <form action="{{ route('entertanment.search') }}" method="GET" class="d-flex justify-content-start align-items-center">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search by name">
+                                <button type="submit" class="btn btn-muted"><img width="20" src="{{ asset('uploads/entertainments/search.png')}}" alt="Search"></button>
+                            </div>
+                        </form>
+                    </div>
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -309,10 +375,9 @@ opacity: 1;
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ url('/pics') }}">
-                                       Test
-                                    </a>
-
+                                    @if(auth()->check() && auth()->user()->isAdmin())
+                                        <a class="dropdown-item" href="/list">Dashboard</a>
+                                    @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -329,9 +394,9 @@ opacity: 1;
         </main>
     </div>
 </body>
-<footer class="footer">
+<footer class="footer mt-auto">
   <div id="container">
-    <p>Copyright © 2023 Your Website M.I.L.O.F</p>
+    <p>Copyright © 2023 M.I.L.O.F</p>
     <ul id="ul">
       <li id="ul"><a id="a" href="#">Home</a></li>
       <li id="ul"><a id="a" href="#">About</a></li>

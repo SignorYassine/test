@@ -93,6 +93,6 @@ class Authenticate implements AuthenticatesRequests
      */
     protected function redirectTo(Request $request)
     {
-        //
+        return route('home');
     }
 }
