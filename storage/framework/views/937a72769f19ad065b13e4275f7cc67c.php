@@ -14,13 +14,32 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-    <style>
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+        <!-- Popper.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+        <!-- Bootstrap JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+<style>
         
-        #body{
+#body{
     background-color:#1A1A1A;
 }
 #titre {
-color: #FFFFFF;
+color: white;
 text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 font-size: 25px;
 font-weight: bold;
@@ -44,10 +63,11 @@ animation-iteration-count: infinite;
 }
 .navbar {
     background-color: #AD4328;
+    color:white;
 }
 .navbar-nav .nav-link {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-    color: #FFFFFF;
+    color: white;
     font-weight: bold;
     margin:20px;
     padding-right: 15px;
@@ -56,7 +76,7 @@ animation-iteration-count: infinite;
 }
 .navbar-nav .nav-link:hover {
     color: #1A1A1A;
-    background-color: #FFFFFF;
+    background-color: #5e1f1f;
     border-radius: 5px;
 }
 
@@ -236,9 +256,11 @@ opacity: 1;
     width:10px;
     cursor: pointer;
     text-decoration:none;
+    font-size: 100rem;
+
 }
 .main:hover .card{
-    border: 2px solid #AD4328;
+    border: 1px solid #AD4328;
 }
 
 .the-info {
@@ -289,6 +311,7 @@ opacity: 1;
 
 
 
+
 </style>
     <!-- Scripts -->
     <?php echo app('Illuminate\Foundation\Vite')(['resources/sass/app.scss', 'resources/js/app.js']); ?>
@@ -307,10 +330,10 @@ opacity: 1;
 </head>
 <body id="body" class="d-flex flex-column min-vh-100">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" id="titre" href="<?php echo e(url('/')); ?>">
-                M.I.L.O.F
+                    M.I.L.O.F
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
@@ -319,53 +342,55 @@ opacity: 1;
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link text-white" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/TvShow">TvShows</a>
+                            <a class="nav-link text-white" href="/TvShow">TvShows</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Movie">Movies</a>
+                            <a class="nav-link text-white" href="/Movie">Movies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Anime">Anime</a>
+                            <a class="nav-link text-white" href="/Anime">Anime</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Games">Games</a>
+                            <a class="nav-link text-white" href="/Games">Games</a>
                         </li>
                     </ul>
 
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         
-                    <div class="mt-4">
-                        <form action="<?php echo e(route('entertanment.search')); ?>" method="GET" class="d-flex justify-content-start align-items-center">
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control" placeholder="Search by name">
-                                <button type="submit" class="btn btn-muted"><img width="20" src="<?php echo e(asset('uploads/entertainments/search.png')); ?>" alt="Search"></button>
+                        <li class="nav-item text-white">
+                            <div class="mt-4">
+                                <form action="<?php echo e(route('entertanment.search')); ?>" method="GET" class="d-flex justify-content-start align-items-center">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control" placeholder="Search by name">
+                                        <button type="submit" class="btn btn-muted"><img width="20" src="<?php echo e(asset('uploads/entertainments/search.png')); ?>" alt="Search"></button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                    </div>
+                        </li>
 
                         <!-- Authentication Links -->
                         <?php if(auth()->guard()->guest()): ?>
                             <?php if(Route::has('login')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
+                                    <a class="nav-link  text-white" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                                 </li>
                             <?php endif; ?>
 
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
+                                    <a class="nav-link  text-white" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle  text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <?php echo e(Auth::user()->name); ?>
 
                                 </a>

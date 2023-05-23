@@ -136,6 +136,7 @@
     </div>
 </div>
 
+
 <script src="<?php echo e(mix('js/app.js')); ?>"></script>
 <script>
     $(document).ready(function() {

@@ -5,7 +5,7 @@
 <div class="container mt-5">
   <a href="<?php echo e(route('list')); ?>" class="btn btn-primary m-3">List</a>
   <a href="<?php echo e(route('admin.user')); ?>" class="btn btn-primary">Users</a>
-  <a href="<?php echo e(url('add-pic')); ?>" class="btn btn btn-primary m-3">Add an entertainment</a>
+  <a href="<?php echo e(url('add-entertainment')); ?>" class="btn btn btn-primary m-3">Add an entertainment</a>
   <div>
     <center>
       <h1 class="text-white">Users</h1>  
@@ -35,6 +35,7 @@
     </tbody>
   </table>
 </div>
+
 
 
 

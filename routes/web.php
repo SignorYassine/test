@@ -29,8 +29,7 @@ Route::get('/list', [administration::class, 'list'])->name('list')->middleware('
 Route::get('/list/edit/{id}', [administration::class, 'edit'])->name("list.edit")->middleware('admin');
 Route::post('/list/update/{id}', [administration::class, 'update'])->name("list.update")->middleware('admin');
 Route::get('/list/check/{id}', [administration::class, 'check'])->name('list.check')->middleware('admin');
-Route::get('/list/filter', [administration::class, 'filter'])->name('list.filter')->middleware('admin');
-Route::get('/list/search', [administration::class, 'search'])->name('list.search')->middleware('admin');
+Route::get('/list/filter', [administration::class, 'filter'])->name('list.filter')->middleware('admin');Route::get('/list/search', [administration::class, 'search'])->name('list.search')->middleware('admin');
 Route::get('/user', [administration::class, 'user'])->name('admin.user')->middleware('admin');
 Route::get('/list/check_user/{id}', [administration::class, 'chekck_user'])->name('user.check')->middleware('admin');
 Route::delete('/list/delete/{id}', [administration::class, 'delete_user'])->name('user.remove')->middleware('admin');

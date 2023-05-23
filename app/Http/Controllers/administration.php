@@ -57,13 +57,20 @@ class administration extends Controller
 
     public function filter(Request $request)
     {
+        $category = $request->input('category');
         $genre = $request->input('genre');
-        $post = entertainment::when($genre, function ($query, $genre) {
-            return $query->where('genre', $genre);
-        })->get();
+
+        $post = entertainment::when($category, function ($query, $category) {
+            return $query->where('category', $category);
+        })
+            ->when($genre, function ($query, $genre) {
+                return $query->where('genre', $genre);
+            })
+            ->get();
 
         return view('admin.list', compact('post'));
     }
+
 
     public function search(Request $request)
     {

@@ -23,19 +23,37 @@
     </div>
 
     <div class="col-md-4">
-        <form action="<?php echo e(route('list.filter')); ?>" method="GET" class="d-flex justify-content-end align-items-center float-end">
-            <div class="input-group">
-                <label for="genre" class="form-label me-3 text-white">Filter by genre:</label>
-                <select name="genre" id="genre" class="form-select rounded">
+    <form action="<?php echo e(route('list.filter')); ?>" method="GET" class="d-flex justify-content-end align-items-center float-end">
+        <div class="input-group">
+            <div style="display: flex; flex-direction: column; margin-right: 1rem;">
+                <label for="category" class="form-label me-3 text-white">Filter by category:</label>
+                <select name="category" id="category" class="form-select rounded" style="width: 100%;">
                     <option value="">All</option>
+                    <option value="tvshow">Tv Show</option>
+                    <option value="movie">Movie</option>
                     <option value="anime">Anime</option>
+                    <option value="games">Games</option>
+                </select>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <label for="genre" class="form-label me-3 text-white">Filter by genre:</label>
+                <select name="genre" id="genre" class="form-select rounded" style="width: 100%;">
+                    <option value="">All</option>
                     <option value="action">Action</option>
                     <option value="comedy">Comedy</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="drama">Drama</option>
+                    <option value="horror">Horror</option>
                 </select>
-                <button type="submit" class="btn btn-primary ms-3 rounded">Filter</button>
             </div>
-        </form>
-    </div>
+            <button type="submit" class="btn btn-primary ms-3 rounded mt-4" style="height: 38px;">Filter</button>
+        </div>
+    </form>
+</div>
+
+
+
 </div>
 
 
@@ -43,8 +61,9 @@
   <table class="table table-bordered border border-3 border-secondary text-white text-center rounded">
     <thead class="bg-dark">
       <tr>
-        <th>IMG</th>
+        <th>Image</th>
         <th>Name</th>
+        <th>category</th>
         <th>Genre</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -57,6 +76,7 @@
           <img class="img-fluid rounded shadow border border-3 border-secondary" width="150" src="<?php echo e(asset('uploads/entertainments/'.$v->img)); ?>" alt="img">
         </td>
         <td><?php echo e($v->name); ?></td>
+        <td><?php echo e($v->category); ?></td>
         <td><?php echo e($v->genre); ?></td>
         <td><a href="<?php echo e(route('list.edit', $v->id)); ?>" class="btn btn-warning">Edit</a></td>
         <td><a href="<?php echo e(route('list.check', $v->id)); ?>" class="btn btn-danger">Delete</a></td>
